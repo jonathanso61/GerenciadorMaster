@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+//classe responsável por atualizar a pagina de exibição das tarefas com recyclerview
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private var tasks: List<Task> = ArrayList()

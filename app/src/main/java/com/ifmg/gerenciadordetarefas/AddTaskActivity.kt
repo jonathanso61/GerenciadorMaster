@@ -45,12 +45,12 @@ class AddTaskActivity : AppCompatActivity() {
                     // Se está editando, atualize a tarefa existente
                     task.id = editingTask!!.id // Mantenha o mesmo ID
                     TaskDBHelper(this).updateTask(task)
-                    scheduleNotification(task) // Agende a notificação ao atualizar a tarefa
+                    scheduleNotification(task)
                     showSnackbar("Tarefa atualizada com sucesso")
                 } else {
                     // Se não está editando, adicione uma nova tarefa
                     TaskDBHelper(this).addTask(task)
-                    scheduleNotification(task) // Agende a notificação ao adicionar a tarefa
+                    scheduleNotification(task)
                     showSnackbar("Tarefa adicionada com sucesso")
                 }
 
@@ -110,8 +110,8 @@ class AddTaskActivity : AppCompatActivity() {
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-            val dueDate = task.dueDate // Suponha que task.dueDate está no formato "dd/MM/yyyy"
-            val dueTime = task.dueTime // Suponha que task.dueTime está no formato "HH:mm"
+            val dueDate = task.dueDate
+            val dueTime = task.dueTime
 
             val parsedDueDate = dateFormat.parse(dueDate)
             val parsedDueTime = timeFormat.parse(dueTime)
@@ -136,13 +136,11 @@ class AddTaskActivity : AppCompatActivity() {
                             pendingIntent
                         )
                     } else {
-                        // Lógica para lidar com a situação em que o aplicativo não tem permissão para agendar alarmes exatos
-                        // Exemplo: exibir uma mensagem ao usuário
+
                         showToast("O aplicativo não tem permissão para agendar alarmes exatos.")
                     }
                 } catch (e: SecurityException) {
-                    // Lógica para lidar com a situação em que o aplicativo não tem permissão para agendar alarmes exatos
-                    // Exemplo: exibir uma mensagem ao usuário
+
                     showToast("O aplicativo não tem permissão para agendar alarmes exatos.")
                 }
             }

@@ -43,7 +43,7 @@ import androidx.core.app.NotificationCompat
                 }
             }
         }
-
+    //constroi e exibi notificações na barra de notificação
     private fun showNotification(context: Context, task: Task) {
         val notificationIntent = Intent(context, MainActivity::class.java)
         notificationIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
